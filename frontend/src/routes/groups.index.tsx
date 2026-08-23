@@ -1,9 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { fetchGroups } from '../api/group'
 import { Skeleton } from '../components/Skeleton'
+import { formatMoney } from '../lib/currency'
 
-export const Route = createFileRoute('/groups')({
+export const Route = createFileRoute('/groups/')({
   component: GroupsPage,
 })
 
@@ -34,6 +35,7 @@ function GroupsPage() {
       </div>
     )
   }
+  
   if(isError) return <p className="text-neg">Failed to load groups</p>
 
   return (
@@ -43,8 +45,10 @@ function GroupsPage() {
 
       <div className="grid grid-cols-2 gap-3.5">
         {groups?.map((group) => (
-          <div
+          <Link
             key={group.id}
+            to="/groups/$groupId"
+            params={{groupId: group.id}}
             className='flex items-center gap-4 rounded-2xl border border-white/10 bg-surface p-5 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] cursor-pointer'
           >
             <div className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-white/5 text-2xl">
@@ -58,7 +62,23 @@ function GroupsPage() {
                 {group.memberIds.length} members - {group.currency}
               </div>
             </div>
-          </div>
+            <div className="text-right">
+              {Math.abs(group.balance) < 0.005 ? (
+                <div className="font-display text-base font-bold text-ink-3">Settled</div>
+              ):(
+                <>
+                  <div
+                    className={`font-display text-base font-bold ${group.balance > 0 ? 'text-pos' : 'text-neg'}`}
+                  >
+                    {formatMoney(group.balance,group.currency,true)}
+                  </div>
+                  <div className="mt-0 5 text-xs font-medium text-ink-4">
+                    {group.balance > 0 ? 'you are owed' : 'you owe'}
+                  </div>
+                </>
+              )}
+            </div>
+          </Link>
         ))}
       </div>
     </div>
