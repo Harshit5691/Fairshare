@@ -39,3 +39,38 @@ body{
 .animate-slideup{
   animation: slideup 0.3s ease;
 }
+
+@keyframes pop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pop {
+  animation: pop 0.22s ease;
+}
+
+/* Numeric figures use the display face with tabular figures so columns line up. */
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #23262f;
+  border-radius: 6px;
+}
+
+::placeholder {
+  color: var(--color-ink-4);
+}
