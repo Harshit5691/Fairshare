@@ -15,7 +15,6 @@ export function Modal({
   children,
   maxWidth = 'max-w-[560px]',
 }: ModalProps) {
-  // Close on Escape, and stop the page behind from scrolling while open.
   useEffect(() => {
     if (!open) return
 

@@ -93,7 +93,6 @@ function GroupDetailPage() {
         ← All groups
       </Link>
 
-      {/* Header */}
       <div className="mb-6 mt-4 flex flex-wrap items-center gap-4">
         <div className="flex h-16 w-16 flex-none items-center justify-center rounded-2xl bg-white/5 text-3xl">
           {group.emoji}
@@ -125,7 +124,6 @@ function GroupDetailPage() {
       </div>
 
       <div className="grid gap-5 md:grid-cols-[1fr_1.4fr]">
-        {/* Left: net balance + per-member balances */}
         <div>
           <div
             className={`mb-5 rounded-2xl border p-5 ${
@@ -184,7 +182,6 @@ function GroupDetailPage() {
           </div>
         </div>
 
-        {/* Right: expense list */}
         <div>
           <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-3">
             Expenses

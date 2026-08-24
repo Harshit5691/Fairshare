@@ -1,4 +1,3 @@
-/** Format an ISO date as a short relative label, e.g. "2d ago". */
 export function relativeTime(iso: string): string {
   const then = new Date(iso).getTime()
   if (Number.isNaN(then)) return ''

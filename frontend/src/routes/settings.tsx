@@ -29,7 +29,6 @@ function SettingsPage() {
         Settings
       </h1>
 
-      {/* Profile */}
       <div className="mb-4 flex items-center gap-4 rounded-2xl border border-white/[0.07] bg-surface p-5">
         <Avatar user={me} size={58} />
         <div className="flex-1">
@@ -45,7 +44,6 @@ function SettingsPage() {
         </button>
       </div>
 
-      {/* Currency */}
       <div className="mb-4 rounded-2xl border border-white/[0.07] bg-surface p-5">
         <div className="mb-3 text-[13px] font-semibold text-ink-2">
           Default currency
@@ -74,7 +72,6 @@ function SettingsPage() {
         </p>
       </div>
 
-      {/* Preferences */}
       <div className="mb-4 overflow-hidden rounded-2xl border border-white/[0.07] bg-surface">
         {PREFS.map((pref) => {
           const on = prefs[pref.key]

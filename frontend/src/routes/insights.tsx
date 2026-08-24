@@ -65,7 +65,6 @@ function InsightsPage() {
         Your spending and balances, converted to {homeCurrency}.
       </p>
 
-      {/* Stat tiles — a headline number needs no chart. */}
       <div className="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
           label="Net balance"
@@ -130,7 +129,6 @@ function StatTile({
   )
 }
 
-/** Spending over the last 12 months. Bars: magnitude over time. */
 function MonthlyChart({
   points,
   currency,
@@ -186,7 +184,6 @@ function MonthlyChart({
   )
 }
 
-/** Share of spend by category. Bars beat a donut for comparing magnitudes. */
 function CategoryChart({
   categories,
   currency,
@@ -247,7 +244,6 @@ function CategoryChart({
   )
 }
 
-/** Total spend per group. */
 function GroupChart({
   groups,
   currency,

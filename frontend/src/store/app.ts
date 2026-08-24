@@ -8,23 +8,18 @@ export interface Toast {
 }
 
 interface AppState {
-  /** Currency all cross-group totals are converted to. */
   homeCurrency: CurrencyCode
   setHomeCurrency: (currency: CurrencyCode) => void
 
-  /** Notification preferences from the Settings screen. */
   prefs: { push: boolean; email: boolean; simplify: boolean }
   togglePref: (key: 'push' | 'email' | 'simplify') => void
 
-  /** Add-expense modal. `groupId` preselects a group when opened from one. */
   addExpenseOpen: boolean
   addExpenseGroupId: string | null
-  /** Increments on every open, so the form remounts fresh each time. */
   addExpenseSession: number
   openAddExpense: (groupId?: string) => void
   closeAddExpense: () => void
 
-  /** Settle-up modal, optionally scoped to one group. */
   settleOpen: boolean
   settleGroupId: string | null
   openSettle: (groupId?: string) => void

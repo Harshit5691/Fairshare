@@ -20,8 +20,6 @@ export const groups: Group[] = [
   { id: 'crew',   name: 'Weekend Crew', emoji: '🍕', currency: 'USD', memberIds: ['me', 'sam', 'jordan', 'nina', 'alex'] },
 ]
 
-// `let` (not const) so mutations can replace the array. Resets on page refresh —
-// there is no backend, so this is the whole persistence story.
 export let expenses: Expense[] = [
   { id: '1',  groupId: 'lisbon', description: 'City-centre flat',       category: 'Travel',        amount: 640,  currency: 'EUR', paidBy: 'me',     splitType: 'equal', splits: equalSplits(640, ['me','jordan','priya','sam']),         createdAt: '2026-08-22' },
   { id: '2',  groupId: 'lisbon', description: 'Dinner at Time Out',     category: 'Food',          amount: 128,  currency: 'EUR', paidBy: 'me',     splitType: 'equal', splits: equalSplits(128, ['me','jordan','priya','sam']),         createdAt: '2026-08-22' },
@@ -39,12 +37,10 @@ export let expenses: Expense[] = [
 
 export let settlements: Settlement[] = []
 
-/** Prepend a new expense to the in-memory store. */
 export function addExpense(expense: Expense) {
   expenses = [expense, ...expenses]
 }
 
-/** Record a settlement (a debt marked as paid) in the in-memory store. */
 export function addSettlement(settlement: Settlement) {
   settlements = [settlement, ...settlements]
 }

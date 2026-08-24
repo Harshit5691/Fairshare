@@ -20,10 +20,8 @@ import {
 import { buildSplits } from '../lib/splits'
 import { convert } from '../constants/rates'
 
-/** The signed-in user. Hardcoded because there is no auth. */
 export const ME = 'me'
 
-/** Simulated network latency, so loading states are visible. */
 const LATENCY = 350
 
 function delay(ms = LATENCY) {
@@ -75,7 +73,6 @@ export interface CreateExpenseInput {
   paidBy: string
   splitType: SplitType
   participantIds: string[]
-  /** Raw per-person input: exact amounts, or percentages. Empty for equal splits. */
   inputValues: Record<string, number>
 }
 
@@ -115,16 +112,13 @@ export interface ActivityItem {
   groupId: string
   emoji: string
   category?: Category
-  /** The full amount of the expense, in its own currency. */
   amount: number
   currency: CurrencyCode
-  /** How this changed what you are owed. Positive = in your favour. */
   impact: number
   subtitle: string
   createdAt: string
 }
 
-/** Every expense and settlement, newest first, annotated with your impact. */
 export async function fetchActivity(): Promise<ActivityItem[]> {
   await delay()
 
@@ -179,7 +173,6 @@ export async function fetchActivity(): Promise<ActivityItem[]> {
 
 export interface FriendRow {
   user: User
-  /** Net balance in your home currency. Positive = they owe you. */
   amount: number
 }
 
@@ -229,7 +222,6 @@ export async function fetchHome(homeCurrency: CurrencyCode): Promise<HomeSummary
 
 export interface SettleTarget {
   user: User
-  /** Positive = they owe you, negative = you owe them. In home currency. */
   amount: number
   currency: CurrencyCode
 }
@@ -361,7 +353,6 @@ export async function fetchInsights(homeCurrency: CurrencyCode): Promise<Insight
     }))
     .sort((a, b) => b.total - a.total)
 
-  // Last 12 months, oldest first.
   const monthly: MonthlyPoint[] = []
   const now = new Date()
   for (let i = 11; i >= 0; i--) {

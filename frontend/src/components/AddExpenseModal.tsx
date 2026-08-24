@@ -12,7 +12,6 @@ import { Avatar } from './Avatar'
 import { Button } from './Button'
 import { Modal } from './Modal'
 
-/** Validates the non-split fields. Split maths is checked separately. */
 const expenseSchema = z.object({
   description: z.string().trim().min(1, 'Add a description'),
   amount: z
@@ -41,8 +40,6 @@ export function AddExpenseModal() {
   return (
     <Modal open={open} onClose={close} title="Add an expense">
       {groups && groups.length > 0 ? (
-        // The session key remounts the form on every open, so it always starts
-        // from clean defaults — no seeding effect, no cascading renders.
         <ExpenseForm
           key={session}
           groups={groups}
@@ -98,7 +95,6 @@ function ExpenseForm({
       const next = current.includes(userId)
         ? current.filter((id) => id !== userId)
         : [...current, userId]
-      // Never allow an empty split.
       return next.length === 0 ? current : next
     })
   }
@@ -122,7 +118,6 @@ function ExpenseForm({
   const mutation = useMutation({
     mutationFn: createExpense,
     onSuccess: () => {
-      // Every screen that reads expenses is now stale.
       for (const key of [
         'groups',
         'group',

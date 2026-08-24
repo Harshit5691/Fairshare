@@ -51,7 +51,6 @@ function HomePage() {
 
   return (
     <div className="animate-slideup">
-      {/* Hero */}
       <section className="relative py-8 text-center">
         <div
           className="pointer-events-none absolute left-1/2 top-3 h-[200px] w-[380px] -translate-x-1/2 blur-[10px]"
@@ -108,7 +107,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Owed / owe */}
       <section className="mx-auto mb-8 grid max-w-[560px] grid-cols-2 gap-3.5">
         <div className="rounded-2xl border border-white/[0.07] bg-surface px-5 py-4">
           <div className="text-xs font-medium text-ink-3">You're owed</div>
@@ -124,7 +122,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Groups */}
       <section className="mb-8">
         <div className="mb-3.5 flex items-center justify-between">
           <h2 className="text-[13px] font-semibold uppercase tracking-wide text-ink-2">
@@ -176,7 +173,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Recent activity */}
       <section>
         <h2 className="mb-3.5 text-[13px] font-semibold uppercase tracking-wide text-ink-2">
           Recent activity

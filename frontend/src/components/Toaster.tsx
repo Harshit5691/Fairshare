@@ -27,7 +27,6 @@ function ToastRow({ toast }: { toast: Toast }) {
   )
 }
 
-/** Renders the toast stack. Mounted once, in the root layout. */
 export function Toaster() {
   const toasts = useAppStore((s) => s.toasts)
 

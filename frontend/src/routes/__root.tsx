@@ -15,7 +15,6 @@ export const Route = createRootRoute({
 })
 
 const NAV: { to: string; label: string; exact?: boolean }[] = [
-  // `/` is a prefix of every route, so it only counts as active on an exact match.
   { to: '/', label: 'Home', exact: true },
   { to: '/groups', label: 'Groups' },
   { to: '/friends', label: 'Friends' },

@@ -22,7 +22,6 @@ export function Avatar({ user, size = 36, className = '' }: AvatarProps) {
   )
 }
 
-/** Overlapping avatar row, as used on the group cards. */
 export function AvatarStack({ users, max = 3 }: { users: User[]; max?: number }) {
   const shown = users.slice(0, max)
   const extra = users.length - shown.length
